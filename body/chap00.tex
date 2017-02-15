@@ -1,4 +1,5 @@
-﻿% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 \rhead{\kai\wuhao \kai\wuhao 引~~言}
 \chapter*{\hfill 引　　言 \hfill}
@@ -7,9 +8,10 @@
 
 \section{字体}
 
-可以使用Windows下的方正、华文或者中易字体，但要注意选择的字体最好是包含宋
+可在Windows使用方正、华文字体，但要注意选择的字体最好是包含宋
 体、黑体、楷体和仿宋的完整套装。不过由于这些字体在PDF浏览器中的显示效果并
-不好，所以建议选用Adobe的中文字体。
+不好，所以建议选用Adobe的中文字体。实际上Adobe的英文字体，例如Garamond和Minion的实际显示效果在PDF中优于Times New Romans，只是属于收费字体，比较可惜，有兴趣、或者正好在系统中安装了这两种字体的同学，可按文件：~\menu[,]{...,setup,fonts.tex}和
+\menu[>]{...>setup>format.tex}~更改字体设置查看效。
 
 系统中应该安装的中文字体：
 \begin{enumerate}
@@ -28,29 +30,77 @@
 
 \section{Windows操作系统}
 
-强烈建议下载最新版本的C\TeX{}。最新版本号为v2.9.2.164。建议选择完整版本
-下载，因为本硕士论文模板使用的某些宏包比较新。不然可能会造成编译错误。
+目前中文操作系统下，两种中文\TeX 排版系统都占据一定市场，当前版本分别是：C\TeX 2.9.2.164（\href{http://www.ctex.org/CTeXDownload}{
+	Download Page}）和\TeX Live2016（\href{http://www.chinatex.org/?p=1323}{Download Page}），前者发行日期是2012年，但从其主页最新消息来看，更新已经提上日程，C\TeX{} 的测试版本2.9.3已经在中国科大开源镜像(\href{http://mirrors.ustc.edu.cn/ctex/unstable/}{Download Page})和清华TUNA开源镜像(\href{https://mirrors.tuna.tsinghua.edu.cn/ctex/unstable/}{Download Page})进行公测，预计2016年4月会出正式版本。如果从写此模板的时间节点而论，目前\TeX{}Live2016的平台加\TeX{}Studio的编译前端要好于C\TeX{}，但再过几个月，就会是个有趣而开放的结论了。因此，从目前而言，暂时推荐初学者使用后者，即：\TeX{}Live2016。
 
 \subsection{编译运行}
 
-需要注意的是，在WinEdit中必须在每个tex文件的开始添加如下的两行：
+需要注意：如果使用C\TeX 排版系统，默认的前端为WinEdt，由于汉字编码形式的差别，要在每个tex文件的开始添加如下的两行：
 \begin{lstlisting}
-  % !TEX TS-program = XeLaTeX
-  % !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = XeLaTeX
+% !TEX encoding = UTF-8 Unicode
 \end{lstlisting}
-否则文件会变成乱码。
 
-以本模版为例，在Windows下的编译过程是这样的：
+此外，还发现一个有趣的问题：如果文件在\TeX{}Studio中打开过，则回到C\TeX{}还是会出现问题，因此，在原来基础上，第一行再增加一句，整体显示效果为：
+\begin{lstlisting}
+	% !Mode:: "TeX:UTF-8"
+	% !TEX TS-program = XeLaTeX
+	% !TEX encoding = UTF-8 Unicode
+\end{lstlisting}
+意思是让文件无论如何，都以UTF-8模式强制打开，这样就不会有问题了。
+
+以本模版为例，在Windows+C\TeX{}+WinEdt下的编译过程是这样的：
 \begin{enumerate}
 \item 打开main.tex文件；
 \item 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单
   中)；
 \item 再点击WinEdt工具栏上的Bib\TeX{}按钮；
 \item 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
-\item 最后点击WinEdt工具栏上的Acrobat Reader按钮就可以看到输出的PDF文档了。
+\item 点击WinEdt工具栏上的Acrobat Reader按钮看到输出的PDF文档，这要在偏好设置中先设置指定Acrobat的程序路径。
 \end{enumerate}
 
+如果是\TeX{}Live2016+\TeX{}Studio前端来编译本模板，则有所不同，如下是过程：
+\begin{enumerate}
+	\item 打开main.tex文件；
+	\item 依次点击\TeX{}Studio菜单栏上:\menu[,]{工具,命令(C),XeLaTeX}按钮；
+	\item 编译完毕，点击\TeX{}Studio菜单栏：\menu[,]{工具,命令(C),Biber}按钮；
+	\item 再点击\TeX{}Studio菜单栏上:\menu[,]{工具,命令(C),XeLaTeX}按钮；
+	\item 最后在main.tex文件任何位置：\menu[,]{右键,跳转到PDF}，这是内置PDF查看器在\TeX{}Studio集成查看，如果使用系统已安装好的Acrobat，则需在菜单栏：\menu[,]{选项(O),设置\TeX{}Studio(C),命令,外部PDF查看器}中指定Acrobat安装路径\footnote{\kai 注：如果重新编译，则一定要把用外部PDF查看器打开的pdf文件手动关闭之后再进行上述步骤，否则编译会出错}。
+\end{enumerate}
 
+Bib\TeX{}和Bib\LaTeX{} 这两种文献索引编译方式并没有什么本质区别，但前者需按："\hologo{XeLaTeX}+Bib\TeX{}+\hologo{XeLaTeX}+\hologo{XeLaTeX}"的流程，总计进行4次编译，后者按："\hologo{XeLaTeX}+Biber+\hologo{XeLaTeX}"进行3次编译得到最终结果，并且它在\TeX{}Live2016下进行比较方便，因为Bib\LaTeX{}的文献编译方式已经集成到了\TeX{}Studio的菜单栏中，可为其在选项中设置快捷键，比如“\keys{F4}”。Bib\LaTeX{}编译的另一个好处是模板文件夹中给出了4个现成的、按“GB/T7714-2015”，也就是最新的中文文献著录规则，设定的文献编译Style，后缀名分别为".bbx"和".cbx"，无需读者干预修改，只要在jabref等文献管理软件中按正确的item录入文献，推送至你的文档，这部分就会自动发挥作用，形成准确的文献引用格式。
+
+\subsection{Adobe字体的获得与安装}
+\hologo{XeLaTeX}的编译方式最令人称道之处在于对系统字体的支持，这在之前的PDF\LaTeX{}编译方式中是无法做到的，因此，只要能在系统中安装好字体，就可以让论文的整体排版质量更上一层楼。以Adobe字体为例，如果安装了Acrobat软件，比如笔者安装的是Acrobat Pro 9.0，复制其默认字体安装路径（\directory{C:/Program Files (x86)/Adobe/Acrobat 9.0/Resource/Font}）下的Adobe Garamand Pro和Minion Pro两种字体拷贝至系统字体安装，在论文模板的\menu[,]{...,setup,fonts.tex}中设定字体，如下：
+\begin{lstlisting}
+	\setmainfont{AGaramondPro-Regular}
+\end{lstlisting}
+即可把整个文档中所有未特别指定、即：默认字体设置为Adobe的AGaramond字体。如果学院或导师对格式的要求较为严格，一定需要指定英文字体为Times New Roman，花括号内字体改成Times New Roman之后，按前述"\hologo{XeLaTeX}+Biber+\hologo{XeLaTeX}"方式编译，可恢复原状。
+
+如果想查看Windows 7系统到底安装了哪些字体，可按照如步骤：
+\begin{enumerate}
+	\item 单击\menu[,]{开始,运行,cmd},打开DOS命令窗口；
+	\item DOS命令窗口中输入如下命令查看简体和繁体中文字体安装情况，并利用记事本打开和存储字体列表：
+	\begin{lstlisting}
+		fc-list :lang=zh>>zhfont.txt
+		notepad zhfont.txt
+	\end{lstlisting}
+	\item DOS命令窗口中输入如下命令查看繁体中文字体安装情况，并利用记事本打开和存储字体列表：
+	\begin{lstlisting}
+		fc-list :lang=zh-tw>>zhtwfont.txt
+		notepad zhtwfont.txt
+	\end{lstlisting}
+	\item DOS命令窗口中输入如下命令查看简体中文字体安装情况，并利用记事本打开和存储字体列表：
+	\begin{lstlisting}
+		fc-list :lang=zh-cn>>zhcnfont.txt
+		notepad zhcnfont.txt
+	\end{lstlisting}
+	\item DOS命令窗口中输入如下命令查看所有字体安装情况，并利用记事本打开和存储字体列表：
+	\begin{lstlisting}
+		fc-list :lang>>allfonts.txt
+		notepad allfont.txt
+	\end{lstlisting}
+\end{enumerate}
 \section{Linux操作系统(以Ubuntu为例)}
 First things first，首先的工作是安装一个合适的\XeTeX{}编译系统。这个问题
 并不难解决，现在主流的\LaTeX{}编译系统均已经包含了对\XeTeX{}的支持（包
@@ -95,22 +145,12 @@ First things first，首先的工作是安装一个合适的\XeTeX{}编译系统
     /usr/local/texlive/2011/texmf/doc/man
   \end{lstlisting}
 \end{enumerate}
-至此安装过程结束。
 
-以上\TeX{}Live安装过程摘自某位筒子的博客文摘，原始链接位于wordpress空间，
-访问有问题，不
-过
-\href{http://hi.baidu.com/skubuntu/blog/item/89e8de2f73a465e08a1399a3.html}{
-  百度空间}有转载，虽然百度搜不着什么玩意。
+至此安装过程结束\footnote{\kai 注：Ubuntu操作系统下的配置和编译为原大工的测试，本人没有用过Linux系统，因此本节内容的测试是否能在\TeX{}Live2016下通过需要使用Ubuntu系统的兄弟自行确认。}。
 
-接下来我们需要安装一套中文字体，你可以使用Windows下的方正、华文或者中易字
-体，但要注意选择的字体最好是包含宋体、黑体、楷体和仿宋的完整套装。不过由
-于这些字体在PDF浏览器中的显示效果并不好，所以建议选用Adobe的中文字体。安
-装及配置过程如下：
+选用Adobe的中文字体。安装及配置过程如下：
 \begin{enumerate}
-\item 下载Adobe中文字体，点
-  击
-  \href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{
+\item 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{
     这里}进入下载页面；
 \item 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请
   以管理员身份新建；
@@ -171,6 +211,7 @@ Kakuto移植到了Microsoft Windows上，其跨平台版本最终包含在\TeX{}
 
 \section{引言内容要求}
 以下给出研究生院对引言内容的要求，格式的要求已经嵌入到本模版中：
+\kai{
 \begin{enumerate}
 \item 引言包含的内容有说明论文的主题和选题的范围、对本论文研究主要范围内已有文献的评述以及
   说明本论文所要解决的问题；
@@ -181,3 +222,4 @@ Kakuto移植到了Microsoft Windows上，其跨平台版本最终包含在\TeX{}
 
 \textcolor[rgb]{1.00,0.00,0.00}
 {特别注意：是否如实引用前人结果反映的是学术道德问题，应明确写出同行相近的和已取得的成果，避免抄袭之嫌。}
+}\song

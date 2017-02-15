@@ -1,4 +1,5 @@
-﻿% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
 \chapter{列表，三线表，插图，参考文献}
@@ -629,13 +630,45 @@ Alan和Cher这一对从校园时代就相偎相依一直到步入婚礼的殿堂
 \texttt{subcaption}即可。
 
 \section{数学}
+更加优美的数学公式是应用\TeX{}进行学术论文撰写的重要原因之一，为达到这一目的，具备简单的数学公式书写语法知识是必要的。关于公式的书写目前也有不少书籍专门论述，例如China\TeX{}主站的Math Mode(\href{http://www.math.ecnu.edu.cn/~latex/docs/Eng_doc/TheLatexCompanionCh8.pdf}{DownLoad Page})，C\TeX{}主站的FAQ问题集(\href{http://www.ctex.org/CTeXFAQ}{DownLoad Page})，以及C\TeX{}套装帮助中也列出了一些对数学公式和特殊符号书写的帮助文件，想在\TeX{}环境下写好公式并非一蹴而就，很多不同领域内所需要的符号，要在论坛或者书籍中反复查找，需要什么样的环境？来自于何种定义？必须加载哪一个宏包？...等等，不一而足。
 
-\subsection{math}
+本节将给出一些基础的公式书写方法，可以对照论文内的源代码，推测出一些论文公式的常见写法。
 
-$\mathbf{A},\mathcal{A},\mathfrak{A},\mathbb{A}$
+\subsection{不同的数学字体}
+
+$\mathbf{A},\mathcal{A},\mathfrak{A},\mathbb{A},\mathscr{A}$
+
+$\mathbf{L},\mathcal{L},\mathfrak{L},\mathbb{L},\mathscr{L}$
 
 \begin{lstlisting}
-  $\mathbf{A},\mathcal{A},\mathfrak{A},\mathbb{A}$
+  $\mathbf{A},\mathcal{A},\mathfrak{A},\mathbb{A},\mathscr{A}$
+\end{lstlisting}
+
+\subsection{行内公式和无编号公式}
+行内公式，相当于公式编辑器mathtype中的“inline”型公式，在\TeX{}语法中，公式主体包裹在一对美元符号内，例如$\sqrt[3]{{x_1}^2+{y_1}^2}$，由如下方式定义：
+\begin{lstlisting}
+	$\sqrt[3]{{x_1}^2+{y_1}^2}$
+\end{lstlisting}
+无编号公式(display mode)和行内公式的区别在于它要独占一行，但没有相应编号，它的公式主体要包括在一对反斜杠中括号之内。类似于公式编辑器mathtype中的display型公式，例如下面的无编号公式：\[\Delta f=\dfrac{\partial^2f}{\partial x^2}+\dfrac{\partial^2f}{\partial x^2}\]由如下方式定义：
+\begin{lstlisting}
+\[\Delta f=\dfrac{\partial^2f}{\partial x^2}+
+	\dfrac{\partial^2f}{\partial y^2}\]
+\end{lstlisting}
+\subsection{带编号公式}
+编号公式是一个equation环境，例如柱坐标系下的拉普拉斯算子如式\ref{eq:laplace}所示：
+\begin{equation}\label{eq:laplace}
+	\Delta f=\dfrac1\rho\dfrac{\partial}{\partial \rho}\left(\rho\dfrac{\partial f}{\partial\rho}\right)+
+	\dfrac{1}{\rho^2}\dfrac{\partial^2f}{\partial \theta^2}+
+	\dfrac{\partial^2f}{\partial z^2}
+\end{equation}
+公式\ref{eq:laplace}的主体被包括在如下环境中：
+\begin{lstlisting}
+\begin{equation}\label{eq:laplace}
+\Delta f=\dfrac1\rho\dfrac{\partial}{\partial\rho}
+\left(\rho\dfrac{\partial f}{\partial\rho}\right)+
+\dfrac{1}{\rho^2}\dfrac{\partial^2f}{\partial \theta^2}+
+\dfrac{\partial^2f}{\partial z^2}
+\end{equation}
 \end{lstlisting}
 
 \subsection{傅立叶变换}
@@ -743,10 +776,10 @@ Fellow英国Fellow of Royal Society的老板来给我们讲，写论文最重要
 当给小盆友写童话。
 
 
-我们的一切知识都是从经验开始\cite{李秋零1999}，这是没有任何怀疑的\cite{邓晓芒2005}\cite{邓晓芒2000}；
+我们的一切知识都是从经验开始，这是没有任何怀疑的；
 因为，如果不是对象激动我们的感官，一则由它们自己引起表象，一则使我们的知性活动运作起来，对这些表象加
-以比较，把它们粘结或分开，\cite{欧进萍1999,欧进萍1991}这样把感性印象的原始素材加工成称之为经验的对象
-知识，那么知识能力又该由什么来唤起活动呢？\cite{braun2007,kelton2002,strawderman2001,李秋零1999}所以
+以比较，把它们粘结或分开，这样把感性印象的原始素材加工成称之为经验的对象
+知识，那么知识能力又该由什么来唤起活动呢？所以
 按照时间，我们没有任何知识是先行于经验的，一切知识都是从经验开始的。
 
 只要是中文文献，图书，期刊，会议，专利等等需要为每个条目增加一个域：
