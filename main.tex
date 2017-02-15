@@ -1,4 +1,5 @@
-﻿% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,7 +11,7 @@
 % 修订者：whufanwei(E-mail: dutfanwei@qq.com)
 % 二次修订：bainhome (E-main: maliang7653@sina.com)
 % 编译环境1：Ubuntu 12.04 + TeXLive 2011 + Emacs
-% 编译环境2：Windows 7 + CTeX v2.9.2.164 + WinEdit
+% Windows 7 SP1 + TeXLive2016 + TeXStudio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,10 +58,12 @@
 \defaultfont
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \include{body/chap00}
-\rhead{\kai\wuhao \kai\wuhao\leftmark}
 \include{body/chap01}
 \include{body/chap02}
 \include{body/chap03}
+%\include{body/chap04}
+%\include{body/chap05}
+%\include{body/chap06}
 
 % 结论
 \include{body/conclusion}
@@ -71,10 +74,14 @@
 \defaultfont
 \wuhao
 \rhead{\kai\wuhao \kai\wuhao 参考文献}
-\bibliographystyle{zjugbno}
-\bibliography{body/reference}
+% ------------- * BibTeX * 文 * 献 * 设 * 置 * --------------------
+%\bibliographystyle{GBT7714-2005NLang-UTF8}
+\printbibliography[heading=bibliography,title=参考文献]
+
 \addcontentsline{toc}{chapter}{参考文献}
 \cleardoublepage
+
+
 % 附录
 \defaultfont
 \rhead{\kai\wuhao \kai\wuhao 附~录}
