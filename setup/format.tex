@@ -1,4 +1,5 @@
-﻿% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9,7 +10,7 @@
 %	修改者：Yuri (E-mail: yuri_1985@163.com)
 %   二次修订：bainhome (E-main: maliang7653@sina.com)
 %	编译环境：Ubuntu 10.04 + TeXLive 2010 + TeXworks
-%   Windows 7 SP1 + CTeX + WinEdt 7.0
+%   Windows 7 SP1 + TeXLive2016 + TeXStudio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,6 +70,8 @@
 \newcommand{\kai}{\CJKfamily{kai}}
 \newcommand{\fs}{\CJKfamily{fs}}
 \newcommand{\xkai}{\CJKfamily{xkai}}
+\newcommand{\ag}{\CJKfamily{agaramond}}
+\newcommand{\minion}{\CJKfamily{minionpro}}
 
 % defaultfont 默认字体命令
 \def\defaultfont{\renewcommand{\baselinestretch}{1.27}
@@ -119,11 +122,12 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 % 设置章、节、小节、小小节的间距
-\titleformat{\chapter}[hang]{\normalfont\erhao\hei \sf}{第\erhao\thechapter 章}{1em}{\erhao}
-\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{3.3ex}
-\titleformat{\section}[hang]{\sanhao\hei\sf}{\sanhao\thesection}{1em}{}{}
+\titleformat{\chapter}[hang]{\normalfont\filcenter\erhao\hei \sf}{\hei\erhao 第\erhao\thechapter\hei\erhao 章}{1em}{\hei\erhao}
+%\titleformat{\chapter*}[display]{\erhao\hei}{\hei\erhao}
+\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{3.0ex}
+\titleformat{\section}[hang]{\sanhao\hei\sf}{\sanhao\thesection}{1em}{\hei}{}
 \titlespacing{\section}{0pt}{0.5em}{0.5em}
-\titleformat{\subsection}[hang]{\sihao\hei\sf}{\sihao\thesubsection}{1em}{}{}
+\titleformat{\subsection}[hang]{\sihao\hei\sf}{\sihao\thesubsection}{1em}{\hei}{}
 \titlespacing{\subsection}{0pt}{0.5em}{0.3em}
 \titleformat{\subsubsection}[hang]{\hei\sf}{\thesubsubsection}{1em}{}{}
 \titlespacing{\subsubsection}{0pt}{0.3em}{0pt}
@@ -140,7 +144,7 @@
 % 定义行距
 \renewcommand{\baselinestretch}{1.27}
 % 参考文献条目间行间距
-\setlength{\bibsep}{2pt}
+%\setlength{\bibsep}{2pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 页眉页脚设置
@@ -161,15 +165,6 @@
 \fancyhead[L]{\@topNEU}
 \fancyhead[R]{\kai\wuhao\leftmark}
 \fancyfoot[C,C]{\xiaowu$-$~\thepage~$-$}
-
-%% ---------- * 重 * 新 * 定 * 义 * 页 * 眉 * 目 * 录 * 格 * 式 * ----------
-%\fancypagestyle{plain}{%
-%    \chead{}
-%    \rhead{\kai\wuhao\leftmark}
-%    \lhead{\kai\wuhao{东北大学博士学位论文}}
-%%    \fancyhead[L]{\kai\wuhao{东北大学博士学位论文}}
-%%    \fancyhead[R]{\kai\wuhao\leftmark}
-%}
 
 % ---------- * 定 * 义 * 页 * 眉 * 中 * 文 * 章 * 标 * 题 * 格 * 式 * ----------
 \renewcommand{\chaptermark}[1]{\markboth{第\arabic{chapter}章~#1 }{}}
@@ -203,8 +198,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \addtolength{\bibsep}{-0.5em}              % 缩小参考文献间的垂直间距
-\setlength{\bibhang}{2em}
-\bibpunct{[}{]}{,}{s}{}{}
+
+%\setlength{\bibhang}{2em}
+%\bibpunct{[}{]}{,}{s}{}{}
 
 
 
@@ -311,6 +307,17 @@
 \def\tmdate#1{\def\@tmdate{#1}}\def\@tmdate{}
 \def\edate#1{\def\@edate{#1}}\def\@edate{}
 
+% -------------- * 字 * 体 * 名 * 称 * 定 * 义 * --------------
+%\def\fontMin#1{\def\@fontMin{#1}}\def\@fontMin{}
+%\def\fontGara#1{\def\@fontGara{#1}}\def\@fontGara{}
+%\def\fontT#1{\def\@fontT{#1}}\def\@fontT{}
+%\def\fontArial#1{\def\@fontArial{#1}}\def\@fontArial{}
+%\def\fontAsong#1{\def\@fontAsong{#1}}\def\@fontAsong{}
+%\def\fontAHei#1{\def\@fontAHei{#1}}\def\@fontAHei{}
+%\def\fontAFs#1{\def\@fontAFs{#1}}\def\@fontAFs{}
+%\def\fontAKai#1{\def\@fontAKai{#1}}\def\@fontAKai{}
+
+
 % -------------------- * 封 * 面 * -------------------------
 \def\makecover{
   \begin{titlepage}
@@ -346,7 +353,7 @@
               申 \hfill 请 \hfill 学 \hfill 位 \hfill 级 \hfill 别：& \@cDegree\hspace{1cm}学~科~类~别：\@cMajor\\
               学 \hfill 科 \hfill 专 \hfill 业 \hfill 名 \hfill 称：& \@csubject\\
               论 \hfill 文 \hfill 提 \hfill 交 \hfill 日 \hfill 期：& \@tmdate~论文答辩日期：\the\year ~ 年~~~ 月 \\
-              学 \hfill 位 \hfill 授 \hfill 予 \hfill 日 \hfill 期：& \hspace{1.2cm}年\hspace{.4cm}月\hspace{.1cm}答辩委员会主席：\@funnynameA\\
+              学 \hfill 位 \hfill 授 \hfill 予 \hfill 日 \hfill 期：& \hspace{1.2cm}年\hspace{.4cm}月\hspace{.1cm}答辩委员会主席：\\
               评 \hfill 阅 \hfill 人：& \\
             \end{tabular}
           }
@@ -388,21 +395,21 @@
     \vspace{0.6cm}
     {
       \sihao\song
-    \hspace{1.2cm} 本人声明，所呈交的学位论文是在导师的指导下完成的。论文中取得的研究成果除加以标注和致谢的地方外，不包含其他人己经发表或撰写过的研究成果，也不包括本人为获得其他学位而使用过的材料。与我一同工作的同志对本研究所做的任何贡献均己在论文中作了明确的说明并表示谢意。\\
+    \hspace{0.85cm} 本人声明，所呈交的学位论文是在导师的指导下完成的。论文中取得的研究成果除加以标注和致谢的地方外，不包含其他人己经发表或撰写过的研究成果，也不包括本人为获得其他学位而使用过的材料。与我一同工作的同志对本研究所做的任何贡献均己在论文中作了明确的说明并表示谢意。\\
       \vspace{0.5cm}
     }
-    {\hspace{9cm}学位作者签名：\\\vspace{0.35cm}\hspace{9cm}日\hspace{0.7cm}期：\\}
+    {\hspace{8.3cm}学位论文作者签名：\\\vspace{0.35cm}\hspace{8.3cm}日\hspace{1.1cm}期：\\}
     \vspace{1.2cm}
     {\center\erhao\hei 学位论文版权使用授权书\\}
     \vspace{0.6cm}
     \sihao\song
-     \hspace{1.2cm} 本学位论文作者和指导教师完全了解东北大学有关保留、使用学位论文的规定：即学校有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。本人同意东北大学可以将学位论文的全部或部分内容编入有关数据库进行检索、交流。
+     \hspace{0.85cm} 本学位论文作者和指导教师完全了解东北大学有关保留、使用学位论文的规定：即学校有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。本人同意东北大学可以将学位论文的全部或部分内容编入有关数据库进行检索、交流。
 
-        \vspace{1.0cm}
+        \vspace{15pt}
 
-    \hspace{1.2cm} 作者和导师同意网上交流的时间为作者获得学位后：\\
-        \vspace{0.7cm}
-    \hspace{1.2cm} 半年~$\Box$ \hspace{1cm} 一年~$\Box$ \hspace{1cm} 一年半~$\Box$ \hspace{1cm} 两年~$\Box$
+    \hspace{0.85cm} 作者和导师同意网上交流的时间为作者获得学位后：\\
+        \vspace{15pt}
+    \hspace{0.85cm} 半年~$\Box$ \hspace{1cm} 一年~$\Box$ \hspace{1cm} 一年半~$\Box$ \hspace{1cm} 两年~$\Box$
     \end{flushleft}
     \vspace{0.7cm}
 \noindent
@@ -473,7 +480,7 @@
   \@cabstract
   \vspace{0.53cm}
 
-  \noindent {\hei{关键词：{\fs\@ckeywords}}}
+  \noindent {\hei{关键词：{\song\@ckeywords}}}
 
   \defaultfont
   %\thispagestyle{fancyplain}

@@ -1,4 +1,5 @@
-﻿% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,14 +11,17 @@
 % 修订者：whufanwei(dutfanwei@qq.com)
 % 二次修订：bainhome (E-main: maliang7653@sina.com)
 % 编译环境1：Ubuntu 12.04 + TeXLive 2011 + Emacs
-% 编译环境2：Windows 7 + CTeX v2.9.2.164 + WinEdit
+% 编译环境2：Windows 7 SP1 + TeXLive2016 + TeXStudio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{expl3,ifthen,xstring}
 
 % 页面设置
 \usepackage[body={16.0cm, 24.7cm}]{geometry}
 \usepackage{indentfirst}                         % 首行缩进宏包
 \usepackage[sf]{titlesec}                        % 控制标题的宏包
 \usepackage{titletoc}                            % 控制目录的宏包
+\usepackage{titleref}                            % 标题引用
 \usepackage{fancyhdr}                            % 自定义页眉页脚
 \usepackage{fancyref}                            % 引用链接属性
 \usepackage[perpage,symbol]{footmisc}            % 脚注控制
@@ -35,8 +39,23 @@
 \usepackage{tabularx}   % 表格折行
 \usepackage{siunitx}    % 国际单位，小数点对齐
 
+% ---------- * 数 * 学 * 相 * 关 * -------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amscd}
 
-% 图形相关
+% ---------- * 特 * 殊 * 符 * 号 * 相 * 关 * -------------
+\usepackage{rotating}
+\usepackage{upgreek}
+\usepackage{pifont}
+\usepackage{bbding}
+\usepackage{bm}
+
+
+% ---------- * 图 * 形 * 相 * 关 * -------------
 \usepackage{graphicx}         % 请在引用图片时务必给出后缀名
 \usepackage[x11names]{xcolor} % 支持彩色
 \usepackage[below]{placeins}  % 浮动图形控制宏包
@@ -45,6 +64,7 @@
 \usepackage{setspace}         % 定制表格和图形的多行标题行距
 \usepackage{subfigure}           % 插入子图形
 \usepackage[subfigure]{ccaption} % 插图表格的双语标题
+\usepackage{overpic}
 
 \usepackage{listings}         % 源代码展示
 \lstset{%
@@ -58,27 +78,56 @@
   showtabs=false,
   tabsize=2,breakatwhitespace=false,
   columns=flexible}
-
+%\usepackage{verbatim}
 % 其他
 \usepackage{calc}   % 在 tex 文件中具有一些计算功能，主要用在页面控制。
-\usepackage[xetex,
-bookmarksnumbered=true,
-bookmarksopen=true,
+%\usepackage[xetex,
+%bookmarksnumbered=true,
+%bookmarksopen=true,
+%colorlinks=true,
+%% pdfborder={0 0 1},
+%citecolor=blue,
+%linkcolor=blue,
+%anchorcolor=green,
+%urlcolor=magenta,
+%breaklinks=true,
+%CJKbookmarks=true,
+%]{hyperref}
+
+\usepackage[CJKbookmarks,
 colorlinks=true,
-% pdfborder={0 0 1},
-citecolor=blue,
+bookmarksnumbered=true,%
+pdfstartview=FitH,
 linkcolor=blue,
-anchorcolor=green,
-urlcolor=magenta,
-breaklinks=true,
-CJKbookmarks=true,
-]{hyperref}
+anchorcolor=violet,
+citecolor=magenta]{hyperref}  %书签功能，选项去掉链接红色方框
 
+%\usepackage[numbers,sort&compress,square,super]{natbib} %参考文献
+%\usepackage{hypernat}
+%\usepackage{bibentry}
 
-\usepackage[numbers,sort&compress,square,super]{natbib} %参考文献
-\usepackage{hypernat}
-\usepackage{bibentry}
+\usepackage[backend=biber,style=gb7714_2015,]{biblatex}
+\setlength{\bibitemsep}{2pt}
+%\defbibheading{bibliography}[\bibname]{%
+%	\phantomsection%解决链接指引出错的问题，相当于加入了一个引导点
+%\addcontentsline{toc}{subsubsection}{#1}
+%\centering\subsubsection*{#1}}%
+\defbibheading{bibliography}[\bibname]{%
+	\chapter*{#1}%
+	\markboth{#1}{#1}}
+% ------------- * BibLaTeX * 文 * 献 * 设 * 置 * ---------------
+%\addbibresource[location=local]{PHDReferences.bib}
+\addbibresource[location=local]{Ref.bib}
+%\usepackage{ulem}
+%\newcommand\yellowback{\bgroup\markoverwith
+%	{\textcolor{yellow}{\rule[-0.5ex]{2pt}{2.5ex}}}\ULon}
+%\newcommand\reduline{\bgroup\markoverwith
+%	{\textcolor{red}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
 
+% ---------- * 文 * 件 * 夹 * 与 * 路 * 径 * logo * 显 * 示 * ------------
+\usepackage{menukeys}
+\usepackage{hologo}
+\renewmenumacro{\directory}{pathswithfolder}
 
 
 
