@@ -1,3 +1,4 @@
+% !Mode:: "TeX:UTF-8"
 % !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
@@ -8,8 +9,8 @@
 %	最后更新：2010.12.22
 %	修改者：Yuri (E-mail: yuri_1985@163.com)
 %   二次修订：bainhome (maliang7653@sina.com)
-%	编译环境：Ubuntu 10.04 + TeXLive 2010 + TeXworks
-%             Windows 7 SP1 + CTeX + WinEdt 7.0
+%	编译环境： Ubuntu 10.04 + TeXLive 2010 + TeXworks
+%   编译环境2：Windows 7 SP1 + TeXLive2016 + TeXStudio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,22 +20,32 @@
 \etitle{The \XeLaTeX{} Template of Doctor Degree Thesis  of NEU}
 
 % 根据需要添加字符间距
-\csubject{华山剑招理论及改良}
-\cauthor{令狐冲}
-\eauthor{Linghu Chong}
-\cauthorno{31415926}
-\csupervisor{岳不群\;掌门人}
-\esupervisor{Person in charge\;YUE Bu-qun}
-\cNEUpartment{五岳联盟华山剑术学院}
-\cNEU{剑术研究学院·黑木崖}%\cNEU{东~~~北~~~大~~~学}
-\eNEU{Northeastern University}
-\cMajor{实~~战}%\cMajor{工~~学}
-\eMajor{Mechanical Design and Automation}
-\cDegree{剑术大师}%博士
+\csubject{华山剑招理论及改良}              % 学科的专业中文名称，例如东北大学机械工程与自动化学院
+\cauthor{令狐冲}                          % 中文作者姓名
+\eauthor{Linghu Chong}                   % 英文作者姓名
+%\cauthorno{31415926}
+\csupervisor{岳不群\;掌门人}              % 导师中文姓名和职称，例如张三\;教授，中间的符号是一个小的间距
+\esupervisor{Person in charge\;YUE Bu-qun}% 导师英文姓名和职称，例如张三\;教授，中间的符号是一个小的间距
+\cNEUpartment{五岳联盟华山剑术学院}        % 东大的话，直接填东北大学加自己的学院名
+\cNEU{剑术研究学院·黑木崖}                 %\cNEU{东~~~北~~~大~~~学}
+\eNEU{Northeastern University}           % 学校英文名
+\cMajor{实~~战}                          %\cMajor{工~~学}
+\eMajor{Mechanical Design and Automation} % 专业英文名称
+\cDegree{剑术大师}                        % 博士
 \topNEU{\kai\wuhao{东北大学博士学位论文}} % 页眉学校标题
 
-\funnynameA{方证(少林学院)}
-\funnynameB{丁不四，王重阳，丁典，阳顶天，冲虚}
+%% ----------- * 定 * 义 * 字 * 体 * 名 * 称 * --------------
+%\fontMin{MinionPro-Regular}
+%\fontGara{AGaramondPro-Regular}
+%\fontT{Times New Roman}
+%\fontArial{Arial}
+%\fontAsong{Adobe Song Std}
+%\fontAHei{Adobe Heiti Std}
+%\fontAFs{Adobe Fangsong Std}
+%\fontAKai{Adobe Kaiti Std}
+
+%\funnynameA{方证(少林学院)}
+%\funnynameB{丁不四，王重阳，丁典，阳顶天，冲虚}
 \etitle{Research and Simulated Implementation of QoS Handoff Mechanisms Based on GA with ABC Supported}
 % 这里默认使用最后编译的时间，也可自行给定日期，注意汉字和数字之间的空格。
 \cdate{\the\year~年~\the\month~月~\the\day~日}
@@ -42,35 +53,14 @@
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
        \or December\fi\unskip~ \the\year}
+
 \cabstract{
-本模版是根据北京大学、清华大学、哈尔滨工业大学，以及大连理工大学博士学位论文格式规范制作的~\LaTeX~博士学位论文模板。并按照东北大学博士学位论文格式规范开发的~\LaTeX~论文模板，
-经过完善和修改，目前已经基本满足了论文规范的要求，
-而且易用性良好，功能强大。不过，可能还存在着一些问题，
-欢迎大家积极使用本模版，反馈遇到的问题，以便不断对其进行改进。
+2012年，艾均(东大信息学院)在清华薛瑞尼工作基础上，稍作调整并提交一份\hologo{pdfLaTeX} 编译方式的论文模板，原模板论文格式兼顾清华大学的学士、硕士、博士和博士后四种格式学位论文，对其他学校，尤其是仅仅针对博士论文撰写而言，这份模板的代码中有过多冗余部分，后期维护有一定挑战性，同时，\hologo{pdfLaTeX} 编译方式不易使用系统字体、过时的CJK语言宏包等等，也让该模板有点儿不太能跟上\TeX 编译的主流形式，虽然2016年3月薛瑞尼在GitHub对模板再次更新，兼顾\hologo{pdfLaTeX}和\hologo{XeLaTeX}两种编译方式，但版本变化确实较大，加之个人水平和时间有限，根据它定义东大模板感觉困难更大。因此，我参考北京大学、清华大学、哈尔滨工业大学，以及大连理工大学论文~\hologo{LaTeX} 模板，按东北大学博士学位论文格式规范，制订了属于东大的~\hologo{XeLaTeX}~论文模板，多数页面、字体设置的结构源自哈工大和大工的模板，对兄弟院校的\TeX 高手表示谢意和敬意。不过参考文献则在TeXLive2016下使用Bib\LaTeX ，其著录规则参照最新的GB/T7714-2015文献著录规则。经一定测试，大体满足东北大学论文规范要求，可能还存在一些问题，欢迎使用本模版，反馈遇到的问题，以便改进。希望这一模板能为在东大推广~\hologo{LaTeX}~，发挥作用。因为一般掌握简单的\hologo{TeX} 语法学习，就能利用本模板，在动辄一百页以上、文献引用量接近两百条的博士论文写作过程中，节省大量时间精力，并轻松地排出接近格式标准而优美的论文。
 
-当然这个模板仅仅是一个开始，希望有更多的人能够参与进来，
-不断改进准确性、易用性和较好的可维护性，造福需要的兄弟姐妹们。
-总体上来说，当前这个模板还是很值得推荐使用的。
-
-本模板的目的旨在推广~\LaTeX~这一优秀的排版软件在大工（尤其是数学相关专业）的应用，
-为广大同学提供一个方便、美观的论文模板，减少论文撰写格式方面的麻烦。
-
-以下顺便补充一些研究生院所提供的~Word~模版中的注意事项
-（略去已经嵌入到此模版中的内容）：
-
-\begin{asparaenum}
-    \item 论文摘要是学位论文的缩影，文字要简练、明确。内容要包括目的、方法、结果和结论。
-        单位制一律换算成国际标准计量单位制，除特别情况外，数字一律用阿拉伯数码。
-        文中不允许出现插图。重要的表格可以写入；
-    \item 篇幅以一页为限，字数为~600-800~字
-        （工程硕士、MBA、EMBA、MPA~等专业学位论文字数为~400-500~字）；
-    \item 摘要正文后，列出~3-5~个关键词。
-        关键词请尽量用《汉语主题词表》等词表提供的规范词。
-        关键词词间用分号间隔，末尾不加标点，3-5~个。
-\end{asparaenum}
+本模板中，采用的编译环境：\menu[,]{Windows7.0-SP1,TeXLive2016,TeXStudio}，其中后两个都是跨平台的自由软件，相信在高版本Windows中也不存在太大问题。前端采用TeXStudio而不是TeXLive2016自带的TeXWorks，因为TeXWorks似乎没有多标签的设置，这对分章节撰写的博士论文不是特别方便。在写模板的过程中也用过CTeX套装，只是CTeX已经太长时间不更新了，一些比较有趣的宏包无法使用，例如Bib\LaTeX 、代码高亮宏包minted等等，都要手动安装，虽然这也并不造成本质性的障碍，但考虑到使用便利性，还是换成了2016年发行的TeXLive2016。
 }
 
-\ckeywords{写作规范；排版格式；博士学位论文；\XeLaTeX{}模版}
+\ckeywords{博士学位论文；排版格式；Bib\hologo{LaTeX}；\hologo{XeLaTeX}模版}
 
 \eabstract{
 This is a \LaTeX{} template of doctor degree thesis of Dalian University of Technology,
