@@ -186,16 +186,30 @@ a_{11} & a_{12} & \cdots  & a_{1n}\\
 a_{21} & a_{22} & \cdots  & a_{2n}\\
 \cdots & \cdots & \cdots  & \cdots\\
 a_{n1} & a_{n2} & \cdots  & a_{nn}\\
-\end{vmatrix} \]的\TeX{}代码为：
+\end{vmatrix} \]上述矩阵\TeX{}代码为：
 \begin{lstlisting}
 \[ \det(A)=\begin{vmatrix}
 a_{11} & a_{12} & \cdots  & a_{1n}\\
 a_{21} & a_{22} & \cdots  & a_{2n}\\
-\cdots & \cdots & \cdots  & \cdots\\
+\cdots & \cdots & \ddots  & \cdots\\
 a_{n1} & a_{n2} & \cdots  & a_{nn}\\
 \end{vmatrix} \]
 \end{lstlisting}
-
+再如4阶魔术矩阵：
+\[\bm{M}=\begin{bmatrix}
+	16&2&3&13\\
+	5&11&10&8\\
+	9&7&6&12\\
+	4&14&15&1\\
+\end{bmatrix}\]实现的\TeX{}代码为：
+\begin{lstlisting}
+\[\bm{\mathrm{M}}=\begin{bmatrix}
+16&2&3&13\\
+5&11&10&8\\
+9&7&6&12\\
+4&14&15&1\\
+\end{bmatrix}\]
+\end{lstlisting}
 \subsection{分段函数}
 amsmath宏包提供了cases 环境用于方便排版分段函数，例如公式：
 \[ \delta(x)=\begin{cases}
@@ -246,29 +260,86 @@ amsmath宏包提供了很多用于长公式排版的命令，一般基于\LaTeX 
 如果中间再加上部分文字，比如：
 \begin{subequations}
 	\begin{align}
-	x&=1+3\\
-	\intertext{wo}\notag\\
-	y&=x+2\\
-	z&=x+y
+		x&=1+3\\
+		\intertext{wo}\notag\\
+		y&=x+2\\
+		z&=x+y
 	\end{align}
 \end{subequations}
 实现的\TeX{}代码：
 \begin{lstlisting}
-\begin{subequations}
-\begin{align}
-x&=1+3\\
-\intertext{wo}\notag\\
-y&=x+2\\
-z&=x+y
-\end{align}
-\end{subequations}
+	\begin{subequations}
+		\begin{align}
+			x&=1+3\\
+			\intertext{wo}\notag\\
+			y&=x+2\\
+			z&=x+y
+		\end{align}
+	\end{subequations}
 \end{lstlisting}
 
-
-
-
-
-
+\subsection{定理环境}
+如下为例题环境：
+\begin{example}
+	例题环境测试
+\end{example}
+代码：
+\begin{lstlisting}
+\begin{example}
+	例题环境测试
+\end{example}
+\end{lstlisting}
+如下为定理环境：
+\begin{theorem}
+	定理环境测试
+\end{theorem}
+代码：
+\begin{lstlisting}
+\begin{theorem}
+	定理环境测试
+\end{theorem}
+\end{lstlisting}
+如下为定义环境：
+\begin{definition}
+	定义环境测试
+\end{definition}
+代码：
+\begin{lstlisting}
+\begin{definition}
+定理环境测试
+\end{definition}
+\end{lstlisting}
+如下为证明环境：
+\begin{proof}
+	证明环境测试
+\end{proof}
+代码：
+\begin{lstlisting}
+\begin{proof}
+	证明环境测试
+\end{proof}
+\end{lstlisting}
+如下为公理环境：
+\begin{axiom}
+	公理环境测试
+\end{axiom}
+代码：
+\begin{lstlisting}
+\begin{axiom}
+	公理环境测试
+\end{axiom}
+\end{lstlisting}
+如下为算法环境：
+\begin{algorithm}
+	算法环境测试
+\end{algorithm}
+代码：
+\begin{lstlisting}
+\begin{algorithm}
+	算法环境测试
+\end{algorithm}
+\end{lstlisting}
+其他数学自定义环境可查看\menu[,]{...,setup,format.tex}文件。
 
 
 %\subsection{行内公式和无编号公式}
