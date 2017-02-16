@@ -31,7 +31,7 @@
 \section{Windows操作系统}
 
 目前中文操作系统下，两种中文\TeX 排版系统都占据一定市场，当前版本分别是：C\TeX 2.9.2.164（\href{http://www.ctex.org/CTeXDownload}{
-	Download Page}）和\TeX Live2016（\href{http://www.chinatex.org/?p=1323}{Download Page}），前者发行日期是2012年，但从其主页最新消息来看，更新已经提上日程，C\TeX{} 的测试版本2.9.3已经在中国科大开源镜像(\href{http://mirrors.ustc.edu.cn/ctex/unstable/}{Download Page})和清华TUNA开源镜像(\href{https://mirrors.tuna.tsinghua.edu.cn/ctex/unstable/}{Download Page})进行公测，预计2016年4月会出正式版本。如果从写此模板的时间节点而论，目前\TeX{}Live2016的平台加\TeX{}Studio的编译前端要好于C\TeX{}，但再过几个月，就会是个有趣而开放的结论了。因此，从目前而言，暂时推荐初学者使用后者，即：\TeX{}Live2016。
+	Download Page}）和\TeX Live2016（\href{http://www.chinatex.org/?p=1323}{Download Page}），前者发行日期是2012年，但从其主页最新消息来看，更新已经提上日程，C\TeX{} 的测试版本2.9.3已经在中国科大开源镜像(\href{http://mirrors.ustc.edu.cn/ctex/unstable/}{Download Page})和清华TUNA开源镜像(\href{https://mirrors.tuna.tsinghua.edu.cn/ctex/unstable/}{Download Page})进行公测，预计2016年4月会出正式版本。如果从写此模板的时间节点而论，目前\TeX{}Live2016的平台加\TeX{}Studio的编译前端个人以为优于C\TeX{}，但再过几个月，也许就是个有趣而开放的议题。从目前而言，暂推荐初学者使用后者，即：\TeX{}Live2016。
 
 \subsection{编译运行}
 
@@ -49,17 +49,17 @@
 \end{lstlisting}
 意思是让文件无论如何，都以UTF-8模式强制打开，这样就不会有问题了。
 
-以本模版为例，在Windows+C\TeX{}+WinEdt下的编译过程是这样的：
-\begin{enumerate}
-\item 打开main.tex文件；
-\item 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单
-  中)；
-\item 再点击WinEdt工具栏上的Bib\TeX{}按钮；
-\item 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
-\item 点击WinEdt工具栏上的Acrobat Reader按钮看到输出的PDF文档，这要在偏好设置中先设置指定Acrobat的程序路径。
-\end{enumerate}
+%以本模版为例，在Windows+C\TeX{}+WinEdt下的编译过程是这样的：
+%\begin{enumerate}
+%\item 打开main.tex文件；
+%\item 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单
+%  中)；
+%\item 再点击WinEdt工具栏上的Bib\TeX{}按钮；
+%\item 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
+%\item 点击WinEdt工具栏上的Acrobat Reader按钮看到输出的PDF文档，这要在偏好设置中先设置指定Acrobat的程序路径。
+%\end{enumerate}
 
-如果是\TeX{}Live2016+\TeX{}Studio前端来编译本模板，则有所不同，如下是过程：
+\TeX{}Live2016+\TeX{}Studio前端编译本模板的顺序是：
 \begin{enumerate}
 	\item 打开main.tex文件；
 	\item 依次点击\TeX{}Studio菜单栏上:\menu[,]{工具,命令(C),XeLaTeX}按钮；
@@ -68,7 +68,7 @@
 	\item 最后在main.tex文件任何位置：\menu[,]{右键,跳转到PDF}，这是内置PDF查看器在\TeX{}Studio集成查看，如果使用系统已安装好的Acrobat，则需在菜单栏：\menu[,]{选项(O),设置\TeX{}Studio(C),命令,外部PDF查看器}中指定Acrobat安装路径\footnote{\kai 注：如果重新编译，则一定要把用外部PDF查看器打开的pdf文件手动关闭之后再进行上述步骤，否则编译会出错}。
 \end{enumerate}
 
-Bib\TeX{}和Bib\LaTeX{} 这两种文献索引编译方式并没有什么本质区别，但前者需按："\hologo{XeLaTeX}+Bib\TeX{}+\hologo{XeLaTeX}+\hologo{XeLaTeX}"的流程，总计进行4次编译，后者按："\hologo{XeLaTeX}+Biber+\hologo{XeLaTeX}"进行3次编译得到最终结果，并且它在\TeX{}Live2016下进行比较方便，因为Bib\LaTeX{}的文献编译方式已经集成到了\TeX{}Studio的菜单栏中，可为其在选项中设置快捷键，比如“\keys{F4}”。Bib\LaTeX{}编译的另一个好处是模板文件夹中给出了4个现成的、按“GB/T7714-2015”，也就是最新的中文文献著录规则，设定的文献编译Style，后缀名分别为".bbx"和".cbx"，无需读者干预修改，只要在jabref等文献管理软件中按正确的item录入文献，推送至你的文档，这部分就会自动发挥作用，形成准确的文献引用格式。
+由于采用Biber机制来解释参考文献编码，因此本模板中的Bib\LaTeX{}和之前使用的Bib\TeX{}虽然没有什么本质区别，但前者需按："\hologo{XeLaTeX}+Bib\TeX{}+\hologo{XeLaTeX}+\hologo{XeLaTeX}"的流程，总计进行4次编译，后者按："\hologo{XeLaTeX}+Biber+\hologo{XeLaTeX}"进行3次编译得到最终结果，并且它在\TeX{}Live2016下进行比较方便，因为Bib\LaTeX{}的文献编译方式已经集成到了\TeX{}Studio的菜单栏中，可为其在选项中设置快捷键，比如“\keys{F4}”。最后，模板文件夹中给出了4个现成的、按“GB/T7714-2015”，也就是最新的中文文献著录规则，设定的文献编译Style，后缀名分别为".bbx"和".cbx"，无需读者干预修改，只要在jabref等文献管理软件中按正确的item录入文献，推送至你的文档，这部分就会自动发挥作用，形成符合要求的文献引用格式。
 
 \subsection{Adobe字体的获得与安装}
 \hologo{XeLaTeX}的编译方式最令人称道之处在于对系统字体的支持，这在之前的PDF\LaTeX{}编译方式中是无法做到的，因此，只要能在系统中安装好字体，就可以让论文的整体排版质量更上一层楼。以Adobe字体为例，如果安装了Acrobat软件，比如笔者安装的是Acrobat Pro 9.0，复制其默认字体安装路径（\directory{C:/Program Files (x86)/Adobe/Acrobat 9.0/Resource/Font}）下的Adobe Garamand Pro和Minion Pro两种字体拷贝至系统字体安装，在论文模板的\menu[,]{...,setup,fonts.tex}中设定字体，如下：
@@ -101,87 +101,87 @@ Bib\TeX{}和Bib\LaTeX{} 这两种文献索引编译方式并没有什么本质�
 		notepad allfont.txt
 	\end{lstlisting}
 \end{enumerate}
-\section{Linux操作系统(以Ubuntu为例)}
-First things first，首先的工作是安装一个合适的\XeTeX{}编译系统。这个问题
-并不难解决，现在主流的\LaTeX{}编译系统均已经包含了对\XeTeX{}的支持（包
-括xeCJK中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
-用\TeX{}Live，目前最新版本为\TeX{}Live 2011。下面以在Ubuntu下的本地安装为
-例，简要的说明\TeX{}Live的安装及配置过程，高玩们请主动绕行：
-\begin{enumerate}
-\item 下载\TeX{}live 2011镜像，点
-  击\href{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/}{这里}进
-  入下载列表。如果你有检查文件完整性的习惯的话，这个列表还提供
-  了md5和sha256校验值；
-\item 安装perl-tk包，以便使用图形界面进行安装。在终端中输入命
-  令\texttt{\footnotesize sudo apt-get install perl-tk}；
-\item 挂载下载好的iso镜像，\texttt{\footnotesize sudo mkdir
-    /mnt/texlive}（在~{/mnt}~下创建texlive文件夹
-  ），\texttt{\footnotesize sudo mount -o loop texlive2011.iso
-    /mnt/texlive}（挂载texlive2011.iso）。进入~/mnt/texlive~目录，输入命
-  令~\texttt{\footnotesize sudo ./install-tl -gui}~之后出现图形界面。之后
-  的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一
-  项Create symlinks in system directories，让安装程序自动创建语法链接。确
-  定安装，耐心等待进度条到头；
-\item 配置环境变量。在终端中输入~\texttt{\footnotesize sudo gedit
-    /etc/bash.bashrc}，在此文件末尾添加
-  \begin{lstlisting}
-    PATH=/usr/local/texlive/2011/bin/i386-linux:$PATH; export PATH
-    MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH; export
-    MANPATH
-    INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
-    export INFOPATH
-  \end{lstlisting}
-  % $
-  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
-    MANPATH mapping}~这行下面的列表后增加一条：
-  \begin{lstlisting}
-    MANPATH_MAP /usr/local/texlive/2011/bin/i386-linux
-    /usr/local/texlive/2011/texmf/doc/man
-  \end{lstlisting}
-  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
-    MANPATH mapping}~这行下面的列表后增加一条：
-  \begin{lstlisting}
-    MANPATH_MAP /usr/local/texlive/2011/bin/i386-linux
-    /usr/local/texlive/2011/texmf/doc/man
-  \end{lstlisting}
-\end{enumerate}
-
-至此安装过程结束\footnote{\kai 注：Ubuntu操作系统下的配置和编译为原大工的测试，本人没有用过Linux系统，因此本节内容的测试是否能在\TeX{}Live2016下通过需要使用Ubuntu系统的兄弟自行确认。}。
-
-选用Adobe的中文字体。安装及配置过程如下：
-\begin{enumerate}
-\item 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{
-    这里}进入下载页面；
-\item 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请
-  以管理员身份新建；
-\item 刷新字体缓存，在终端中输入~\texttt{\footnotesize sudo fc-cache -fv }。这时，你可以通过~\texttt{\footnotesize fc-list :lang=zh-cn |sort}~命令来查看字体是否安装成功，注意fc-list后有个空格；
-\item 你可能还需要在终端中运行~\texttt{\footnotesize sudo apt-get
-    install poppler-data cmap-adobe-cns1 cmap-adobe-gb1}命令来解决Adobe中
-  文字体在PDF文件中不显示的情况。
-\end{enumerate}
-这样，我们就配置好了中文字体，当然这没什么特别的，网上教程一大把。
-
-之后我们需要一个类似于WinEdt的集成编译环境。在Ubuntu软件中心中，我们能很
-容易的安装\TeX{}maker和\TeX{}works，两者功能差不多，\TeX{}maker更强大一些。
-当然，你也可以自己配置VIM下的\LaTeX{}编译环境，在此就不赘述了。
-
-\subsection{编译运行}
-
-
-在安装并配置好编译环境之后，接下来的工作就是如何编译\XeLaTeX{}文件，生成
-所需的PDF文档了。以本模版为例，在\TeX{}works编译过程是这样的：
-\begin{enumerate}
-\item 打开main.tex文件；
-\item 将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行；
-\item 再将工具栏上的编译命令切换至Bib\TeX{}后，点击运行；
-\item 再将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行，这里需要运行两
-  到三遍；
-\item 如果编译没有错误，就可以看到输出的PDF文件了。
-\end{enumerate}
-
-对于\TeX{}maker，首先需要在【选项】【配置\TeX{}maker】【命令】中将第一行
-的latex改成xelatex，之后用\LaTeX{}作为\XeLaTeX{}命令执行即可，其他的和上
-面类似。
+%\section{Linux操作系统(以Ubuntu为例)}
+%First things first，首先的工作是安装一个合适的\XeTeX{}编译系统。这个问题
+%并不难解决，现在主流的\LaTeX{}编译系统均已经包含了对\XeTeX{}的支持（包
+%括xeCJK中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
+%用\TeX{}Live，目前最新版本为\TeX{}Live 2011。下面以在Ubuntu下的本地安装为
+%例，简要的说明\TeX{}Live的安装及配置过程，高玩们请主动绕行：
+%\begin{enumerate}
+%\item 下载\TeX{}live 2011镜像，点
+%  击\href{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/}{这里}进
+%  入下载列表。如果你有检查文件完整性的习惯的话，这个列表还提供
+%  了md5和sha256校验值；
+%\item 安装perl-tk包，以便使用图形界面进行安装。在终端中输入命
+%  令\texttt{\footnotesize sudo apt-get install perl-tk}；
+%\item 挂载下载好的iso镜像，\texttt{\footnotesize sudo mkdir
+%    /mnt/texlive}（在~{/mnt}~下创建texlive文件夹
+%  ），\texttt{\footnotesize sudo mount -o loop texlive2011.iso
+%    /mnt/texlive}（挂载texlive2011.iso）。进入~/mnt/texlive~目录，输入命
+%  令~\texttt{\footnotesize sudo ./install-tl -gui}~之后出现图形界面。之后
+%  的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一
+%  项Create symlinks in system directories，让安装程序自动创建语法链接。确
+%  定安装，耐心等待进度条到头；
+%\item 配置环境变量。在终端中输入~\texttt{\footnotesize sudo gedit
+%    /etc/bash.bashrc}，在此文件末尾添加
+%  \begin{lstlisting}
+%    PATH=/usr/local/texlive/2011/bin/i386-linux:$PATH; export PATH
+%    MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH; export
+%    MANPATH
+%    INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
+%    export INFOPATH
+%  \end{lstlisting}
+%  % $
+%  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
+%    MANPATH mapping}~这行下面的列表后增加一条：
+%  \begin{lstlisting}
+%    MANPATH_MAP /usr/local/texlive/2011/bin/i386-linux
+%    /usr/local/texlive/2011/texmf/doc/man
+%  \end{lstlisting}
+%  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
+%    MANPATH mapping}~这行下面的列表后增加一条：
+%  \begin{lstlisting}
+%    MANPATH_MAP /usr/local/texlive/2011/bin/i386-linux
+%    /usr/local/texlive/2011/texmf/doc/man
+%  \end{lstlisting}
+%\end{enumerate}
+%
+%至此安装过程结束\footnote{\kai 注：Ubuntu操作系统下的配置和编译为原大工的测试，本人没有用过Linux系统，因此本节内容的测试是否能在\TeX{}Live2016下通过需要使用Ubuntu系统的兄弟自行确认。}。
+%
+%选用Adobe的中文字体。安装及配置过程如下：
+%\begin{enumerate}
+%\item 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{
+%    这里}进入下载页面；
+%\item 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请
+%  以管理员身份新建；
+%\item 刷新字体缓存，在终端中输入~\texttt{\footnotesize sudo fc-cache -fv }。这时，你可以通过~\texttt{\footnotesize fc-list :lang=zh-cn |sort}~命令来查看字体是否安装成功，注意fc-list后有个空格；
+%\item 你可能还需要在终端中运行~\texttt{\footnotesize sudo apt-get
+%    install poppler-data cmap-adobe-cns1 cmap-adobe-gb1}命令来解决Adobe中
+%  文字体在PDF文件中不显示的情况。
+%\end{enumerate}
+%这样，我们就配置好了中文字体，当然这没什么特别的，网上教程一大把。
+%
+%之后我们需要一个类似于WinEdt的集成编译环境。在Ubuntu软件中心中，我们能很
+%容易的安装\TeX{}maker和\TeX{}works，两者功能差不多，\TeX{}maker更强大一些。
+%当然，你也可以自己配置VIM下的\LaTeX{}编译环境，在此就不赘述了。
+%
+%\subsection{编译运行}
+%
+%
+%在安装并配置好编译环境之后，接下来的工作就是如何编译\XeLaTeX{}文件，生成
+%所需的PDF文档了。以本模版为例，在\TeX{}works编译过程是这样的：
+%\begin{enumerate}
+%\item 打开main.tex文件；
+%\item 将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行；
+%\item 再将工具栏上的编译命令切换至Bib\TeX{}后，点击运行；
+%\item 再将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行，这里需要运行两
+%  到三遍；
+%\item 如果编译没有错误，就可以看到输出的PDF文件了。
+%\end{enumerate}
+%
+%对于\TeX{}maker，首先需要在【选项】【配置\TeX{}maker】【命令】中将第一行
+%的latex改成xelatex，之后用\LaTeX{}作为\XeLaTeX{}命令执行即可，其他的和上
+%面类似。
 
 \section{XeTeX简介}
 \XeTeX{}（英文发音为"zee-\TeX{}"）是一种使用Unicode的\TeX{}排版引擎，并支
