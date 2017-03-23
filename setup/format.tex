@@ -5,8 +5,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex
-%	版本：0.2
-%	最后更新：2017.02.16
+%	版本：0.21
+%	最后更新：2017.03.16
 %   二次修订：bainhome (E-main: maliang7653@sina.com)
 %   Windows 7 SP1 + TeXLive2016 + TeXStudio
 %
@@ -419,84 +419,32 @@
   \end{titlepage}
 }
 
-% ------ * 授 * 权 * 书 * 与 * 独 * 创 * 性 * 声 * 明 * --------
-%\def\originality{
-%  \renewcommand{\baselinestretch}{1.61}
-%  \newpage
-%  \thispagestyle{empty}
-%  \begin{center}
-%    \parbox[t][1.52cm][c]{\textwidth}
-%    {\xiaoer\song\centerline{独创性声明}}
-%    \parbox[t][7.68cm][c]{\textwidth}
-%    {
-%      \sihao\fs\noindent
-%      　　本人声明，所呈交的学位论文是在导师的指导下完成的。论文中取得的研究成果除加以标注和致谢的地方外，不包含其他人己经发表或撰写过的研究成果，也不包括本人为获得其他学位而使用过的材料。与我一同工作的同志对本研究所做的任何贡献均己在论文中作了明确的说明并表示谢意。
-%    }
-%    \parbox[t][0.58cm][c]{\textwidth}
-%    {\sihao\fs 学{\hfill}位{\hfill}论{\hfill}文{\hfill}题{\hfill}目{\hfill}：\fixedunderlinecenter[12.6cm]{\@ctitle}}
-%    \parbox[t][1.22cm][c]{\textwidth}
-%    {\sihao\song \hspace{9cm}学位作者签名：\\}
-%    {\hspace{9cm}日\hspace{1cm}期：\\}
-%    \vspace{1cm}
-%  \end{center}
-%  \renewcommand{\baselinestretch}{1.27}
-%  \cleardoublepage
-%}
-%
-%\def\authorization
-%{
-%  \begin{center}
-%    \sanhao\hei~大连理工大学学位论文版权使用授权书~
-%  \end{center}
-%
-%  \sihao\fs\noindent
-%  　　本人完全了解学校有关学位论文知识产权的规定，%
-%  在校攻读学位期间论文工作的知识产权属于大连理工大学，允许论文被查阅和借阅。%
-%  学校有权保留论文并向国家有关部门或机构送交论文的复印件和电子版，%
-%  可以将本学位论文的全部或部分内容编入有关数据库进行检索，%
-%  可以采用影印、缩印、或扫描等复制手段保存和汇编本学位论文。%
-%  \\
-%
-%  \vspace{0.2cm}\noindent
-%  学{\hfill}位{\hfill}论{\hfill}文{\hfill}题{\hfill}目{\hfill}：\fixedunderlinecenter[12.6cm]{\@ctitle}\\
-%  作{\hfill}者{\hfill}签{\hfill}名{\hfill}：\fixeddistanceleft[12.6cm]{\underline{\hspace{5.8cm}}\hfill
-%    日期：\underline{\hspace{1.4cm}}~年~{\underline{\hspace{0.7cm}}~月~{\underline{\hspace{0.7cm}}~日~}}}\\
-%  导{\hfill}师{\hfill}签{\hfill}名{\hfill}：\fixeddistanceleft[12.6cm]{\underline{\hspace{5.8cm}}\hfill
-%    日期：\underline{\hspace{1.4cm}}~年~{\underline{\hspace{0.7cm}}~月~{\underline{\hspace{0.7cm}}~日~}}}\\
-%  \renewcommand{\baselinestretch}{1.27}
-%}
-
 \def\makeabstract{
-  \defaultfont
-  %\thispagestyle{fancyplain}
-  \rhead{\kai\wuhao 摘　要}
-  \chapter*{\xiaosan\hei\@ctitle}
-  \centerline{\erhao\hei\hfill 摘　要 \hfill }
-  \vspace{0.5cm}
-  \addcontentsline{toc}{chapter}{摘　要}
-  \setcounter{page}{2}
-  \@cabstract
-  \vspace{0.53cm}
+	\defaultfont
+	\section*{}
+	\rhead{\kai\wuhao 摘　要}
+	%  \chapter*{\xiaosan\hei\@ctitle}
+	\centerline{\erhao\hei\hfill 摘　要 \hfill }
+	\vspace{0.5cm}
+	\addcontentsline{toc}{chapter}{摘　要}
+	\setcounter{page}{2}
+	\@cabstract
+	\vspace{0.53cm}
 
   \noindent {\hei{关键词：{\song\@ckeywords}}}
 
-  \defaultfont
-  %\thispagestyle{fancyplain}
-  \cleardoublepage
-  \chapter*{}
-  \rhead{\kai\wuhao Abstract}
-  \addcontentsline{toc}{chapter}{Abstract}
-  \vspace{-1.40cm}
-  \begin{center}
-    {\erhao\textrm{\@etitle}}
-  \end{center}
-  \vspace{-0.35cm}
-  \begin{center}
-    {
-      \erhao{Abstract}\\
-    }
-  \end{center}
-  \vspace{0.12cm}
+ \defaultfont
+\cleardoublepage
+\section*{}
+\rhead{\kai\wuhao Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\vspace{-0.35cm}
+\begin{center}
+	{
+		\erhao{Abstract}\\
+	}
+\end{center}
+\vspace{0.12cm}
 
   \@eabstract
 
