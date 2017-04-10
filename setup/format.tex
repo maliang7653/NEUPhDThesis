@@ -2,20 +2,17 @@
 % !TEX TS-program = XeLaTeX
 % !TEX encoding = UTF-8 Unicode
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex
-%	版本：0.21
-%	最后更新：2017.03.16
-%   二次修订：bainhome (E-main: maliang7653@sina.com)
-%   Windows 7 SP1 + TeXLive2016 + TeXStudio
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ==================================================================
+%                                                                   %
+%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex                 %
+%	版本：0.21                                                       %
+%	最后更新：2017.03.16                                              %
+%   二次修订：bainhome (E-main: maliang7653@sina.com)                 %
+%   编译环境：Windows 7 SP1 + TeXLive 2016 + TeXStudio2.12.2          %
+%                                                                   %
+% ==================================================================
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 页面设置
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% A4 纸张
+% 页面设置——A4 纸张
 \setlength{\paperwidth}{21.0cm}
 \setlength{\paperheight}{29.7cm}
 % 设置正文尺寸大小
@@ -45,17 +42,19 @@
 \renewcommand{\textfraction}{0.0000001}
 \renewcommand{\floatpagefraction}{0.9999}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 字体字号定义
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------- * 公 * 式 * 测 * 试 * 命 * 令 * 定 * 义 * ---------------
+\newcommand{\TEST}[1]{\[#1\] \[2^{#1}\] \[2^{2^{#1}}\]}
+
+% ---------- * 字 * 体 * 字 * 号 * 定 * 义 * -----------------
+
 % 字号
 \newcommand{\yihao}{\fontsize{26pt}{39pt}\selectfont}	    % 一号，1.5  倍行距
 \newcommand{\xiaoyi}{\fontsize{24pt}{30pt}\selectfont}      % 小一，1.25 倍行距
-\newcommand{\erhao}{\fontsize{22pt}{27.5pt}\selectfont}     % 二号，1.25 倍行距
+\newcommand{\erhao}{\fontsize{22pt}{44pt}\selectfont}     % 二号，2.0 倍行距
 \newcommand{\xiaoer}{\fontsize{18pt}{22.5pt}\selectfont}    % 小二，1.25 倍行距
-\newcommand{\sanhao}{\fontsize{16pt}{20pt}\selectfont}      % 三号，1.25 倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}      % 三号，1.5 倍行距
 \newcommand{\xiaosan}{\fontsize{15pt}{19pt}\selectfont}     % 小三，1.25 倍行距
-\newcommand{\sihao}{\fontsize{14pt}{17.5pt}\selectfont}     % 四号，1.25倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}     % 四号，1.25倍行距
 \newcommand{\daxiaosi}{\fontsize{12pt}{18pt}\selectfont}    % 小四，1.5 倍行距
 \newcommand{\xiaosi}{\fontsize{12pt}{15pt}\selectfont}      % 小四，1.25倍行距
 \newcommand{\dawu}{\fontsize{10.5pt}{18pt}\selectfont}      % 五号，1.75倍行距
@@ -89,9 +88,7 @@
 \newcommand\fixedunderlineright[2][1cm]{\underline{\hb@xt@ #1{\hss#2}}}
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 标题环境相关
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------- * 标 * 题 * 环 * 境 * 相 * 关 *  ------------------- 
 % 定义、定理等环境
 \theoremstyle{plain}
 \theoremheaderfont{\hei\bf}
@@ -107,6 +104,82 @@
 \newtheorem{corollary}{\hei 推论}[chapter]
 \newtheorem{remark}{\hei 注解}[chapter]
 \newenvironment{proof}{\hei{证明}　}{\hfill $\square$ \vskip 4mm}
+
+% ------------- * 彩 * 色 * 含 * 框 * 定 * 理 * 环 * 境 * 定 * 义 *  ------------ 
+%Theorem
+\newcounter{theo}[section] \setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+\newenvironment{theo}[2][]{%
+	\refstepcounter{theo}%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem~\thetheo};}}
+	}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem~\thetheo:~#1};}}%
+	}%
+	\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+		linewidth=2pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Lemma
+\newcounter{lem}[section] \setcounter{lem}{0}
+\renewcommand{\thelem}{\arabic{section}.\arabic{lem}}
+\newenvironment{lem}[2][]{%
+	\refstepcounter{lem}%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=green!20]
+				{\strut Lemma~\thelem};}}
+	}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=green!20]
+				{\strut Lemma~\thetheo:~#1};}}%
+	}%
+	\mdfsetup{innertopmargin=10pt,linecolor=green!20,%
+		linewidth=2pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proof
+\newcounter{prf}[section]\setcounter{prf}{0}
+\renewcommand{\theprf}{\arabic{section}.\arabic{prf}}
+\newenvironment{prf}[2][]{%
+	\refstepcounter{prf}%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=red!20]
+				{\strut Proof~\theprf};}}
+	}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=red!20]
+				{\strut Proof~\thetheo:~#1};}}%
+	}%
+	\mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+		linewidth=2pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		\label{#2}}{\qed\end{mdframed}}
 
 % 目录标题
 \renewcommand\contentsname{\hfill 目　　录 \hfill}
@@ -200,7 +273,30 @@
 %\setlength{\bibhang}{2em}
 %\bibpunct{[}{]}{,}{s}{}{}
 
+%简化偏导数的输入
+%---------------------------------------------
+%使用示范：\piandao{a}{b} 表示 a 对 b 的 1 阶偏导数
+%或者 \piandao[n]{a}{b^n} 表示 a 对 b 的 n 阶偏导
+\newcommand{\piandao}[3][1]{
+	\ifthenelse{\equal{#1}{1}}{ %默认 1 阶导数
+		\frac{\partial #2}{\partial #3}
+	}{
+		\frac{\partial^{#1} #2}{\partial #3}
+	}
+}
 
+%定义数学直体的微分算子
+\newcommand{\opd}{\mathrm{d}}
+%\newcommand{\opD}{\mathrm{D}}
+
+%导数，小写d
+\newcommand{\daoshu}[3][1]{
+	\ifthenelse{\equal{#1}{1}}{ %默认 1 阶导数
+		\frac{\opd #2}{\opd #3}
+	}{
+		\frac{\opd^{#1} #2}{\opd #3}
+	}
+}
 
 
 % \let\orig@Itemize =\itemize
@@ -305,17 +401,6 @@
 \def\tmdate#1{\def\@tmdate{#1}}\def\@tmdate{}
 \def\edate#1{\def\@edate{#1}}\def\@edate{}
 
-% -------------- * 字 * 体 * 名 * 称 * 定 * 义 * --------------
-%\def\fontMin#1{\def\@fontMin{#1}}\def\@fontMin{}
-%\def\fontGara#1{\def\@fontGara{#1}}\def\@fontGara{}
-%\def\fontT#1{\def\@fontT{#1}}\def\@fontT{}
-%\def\fontArial#1{\def\@fontArial{#1}}\def\@fontArial{}
-%\def\fontAsong#1{\def\@fontAsong{#1}}\def\@fontAsong{}
-%\def\fontAHei#1{\def\@fontAHei{#1}}\def\@fontAHei{}
-%\def\fontAFs#1{\def\@fontAFs{#1}}\def\@fontAFs{}
-%\def\fontAKai#1{\def\@fontAKai{#1}}\def\@fontAKai{}
-
-
 % -------------------- * 封 * 面 * -------------------------
 \def\makecover{
   \begin{titlepage}
@@ -369,7 +454,7 @@
 %------------------------ * 英 * 文 * 封 * 面 * -------------------------
     \newpage
     \thispagestyle{empty}
-    \sihao{\textbf{A Thesis in \@eMajor}}
+    \sihao{\textbf{A Dissertation in \@eMajor}}
     \vspace{1.2cm}
     \begin{center}
           {\erhao\textbf{\@etitle}\\}
@@ -420,37 +505,41 @@
 }
 
 \def\makeabstract{
-	\defaultfont
-	\section*{}
-	\rhead{\kai\wuhao 摘　要}
-	%  \chapter*{\xiaosan\hei\@ctitle}
-	\centerline{\erhao\hei\hfill 摘　要 \hfill }
-	\vspace{0.5cm}
-	\addcontentsline{toc}{chapter}{摘　要}
-	\setcounter{page}{2}
-	\@cabstract
-	\vspace{0.53cm}
+  \defaultfont
+  \section*{}
+  \rhead{\kai\wuhao 摘　要}
+%  \chapter*{\xiaosan\hei\@ctitle}
+  \centerline{\erhao\hei\hfill 摘　要 \hfill }
+  \vspace{0.5cm}
+  \addcontentsline{toc}{chapter}{摘　要}
+  \setcounter{page}{2}
+  \@cabstract
+  \vspace{0.53cm}
 
   \noindent {\hei{关键词：{\song\@ckeywords}}}
 
- \defaultfont
-\cleardoublepage
-\section*{}
-\rhead{\kai\wuhao Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
-\vspace{-0.35cm}
-\begin{center}
-	{
-		\erhao{Abstract}\\
-	}
-\end{center}
-\vspace{0.12cm}
+  \defaultfont
+  \cleardoublepage
+  \section*{}
+  \rhead{\kai\wuhao Abstract}
+  \addcontentsline{toc}{chapter}{Abstract}
+%  \vspace{-1.40cm}
+%  \begin{center}
+%    {\erhao\textrm{\@etitle}}
+%  \end{center}
+  \vspace{-0.35cm}
+  \begin{center}
+    {
+      \erhao{Abstract}\\
+    }
+  \end{center}
+  \vspace{0.12cm}
 
   \@eabstract
 
   \vspace{0.55cm}
 
-  \noindent {\textbf{Key Words:}}~~{\textsf{\@ekeywords}}
+  \noindent {\textbf{Key Words:}~~\@ekeywords}
   \cleardoublepage
 }
 
