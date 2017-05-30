@@ -4,11 +4,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% 东北大学博士论文 XeLaTeX 模版 —— 宏包配置文件 packages.tex
-%	版本：0.21
-%	最后更新：2017.03.16
-%   二次修订：bainhome (maliang7653@sina.com)
-%   编译环境：Windows 7 SP1 + TeXLive2016 + TeXStudio
+%   东北大学博士论文 XeLaTeX 模版 —— 宏包配置文件 packages.tex
+%	版本：0.2
+%	最后更新：2017.02.16
+%   二次修订：bainhome (E-main: maliang7653@sina.com)
+%   编译环境：Windows 7 SP1 + CTeXLive 2016 + TeXStudio2.12.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{expl3,ifthen,xstring}
@@ -28,6 +28,7 @@
 \usepackage{fancyvrb}                            % 原样输出
 \usepackage[amsmath,thmmarks,hyperref]{ntheorem} % 定理类环境宏包
 \usepackage{type1cm}                             % 控制字体的大小
+\usepackage{lscape}                              % 控制单页横向
 
 % 表格处理
 \usepackage{booktabs}   % 三线表
@@ -35,14 +36,17 @@
 \usepackage{diagbox}    % 斜线表头
 \usepackage{tabularx}   % 表格折行
 \usepackage{siunitx}    % 国际单位，小数点对齐
+\usepackage{threeparttable}
 
 % ---------- * 数 * 学 * 相 * 关 * -------------
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathrsfs}
 \usepackage{amsthm}
 \usepackage{amscd}
+% ---------- * 新 * 数 * 学 * 字 * 体 * 测 * 试 * -------------
+\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+% ---------------- * 化 * 学 * 相 * 关 * 宏 * 包 * -------------
+\usepackage[version=4]{mhchem}
 
 % ---------- * 特 * 殊 * 符 * 号 * 相 * 关 * -------------
 \usepackage{rotating}
@@ -63,18 +67,45 @@
 \usepackage[subfigure]{ccaption} % 插图表格的双语标题
 \usepackage{overpic}
 
+% --------------- * 含 * 框 * 定 * 理 * 环 * 境 * 定 * 义 * 用 * 宏 * 包 * --------------- 
+\usepackage[framemethod=TikZ]{mdframed}
+
 \usepackage{listings}         % 源代码展示
-\lstset{%
-  language=TeX,
-  defaultdialect=empty,
-  basicstyle=\ttfamily\small,
-  backgroundcolor=\color{LightSteelBlue1},
-  keywordstyle=\color{blue},
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=2,breakatwhitespace=false,
-  columns=flexible}
+
+% --------- * 大 * 工 * 原 * 始 * 设 * 置 * ---------
+%\lstset{%
+%  language=matlab,
+%  defaultdialect=empty,
+%  basicstyle=\ttfamily\small,
+%  backgroundcolor=\color{LightSteelBlue1},
+%  keywordstyle=\color{blue},
+%  showspaces=false,
+%  showstringspaces=false,
+%  showtabs=false,
+%  tabsize=2,breakatwhitespace=false,
+%  columns=flexible}
+
+% ---------- * 自 * 定 * 义 * 代 * 码 * 格 * 式 * 设 * 置 * ---------
+\renewcommand{\lstlistlistingname}{程\quad 序}
+\renewcommand{\lstlistingname}{例}
+\contentsuse{lstlisting}{lol}
+\titlecontents{lstlisting}[0pt]{\vspace{0.05\baselineskip}}{}{\thecontentslabel\quad}{\hspace{.5em}\titlerule*[8pt]{$\cdot$}\contentspage}
+\lstset{
+	language=matlab,
+	%basicstyle=\normalsize\tt,
+	basicstyle=\small\tt,
+	frame=l,
+	numbers=left,
+	numberstyle=\footnotesize,
+	showstringspaces=false,
+	%breaklines=true,
+	breaklines=false,
+	breakatwhitespace=false,
+}
+\usepackage{caption}
+\captionsetup[lstlisting]{labelformat=empty,labelsep=none,format=plain,font=bf}
+
+
 %\usepackage{verbatim}
 % 其他
 \usepackage{calc}   % 在 tex 文件中具有一些计算功能，主要用在页面控制。
@@ -91,6 +122,12 @@
 %CJKbookmarks=true,
 %]{hyperref}
 
+% ----------------------- MATLAB * 代 * 码 * 格 * 式 * 设 * 置 ------------------------
+%\usepackage[minted]{tcolorbox}
+%\tcbuselibrary{skins, listings, xparse, breakable}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+% ---------------------- * 超 * 链 * 接 * 与 * 书 * 签 * 设 * 置 * -----------------------------
 \usepackage[CJKbookmarks,
 colorlinks=true,
 bookmarksnumbered=true,%
@@ -99,9 +136,20 @@ linkcolor=blue,
 anchorcolor=violet,
 citecolor=magenta]{hyperref}  %书签功能，选项去掉链接红色方框
 
-%\usepackage[numbers,sort&compress,square,super]{natbib} %参考文献
-%\usepackage{hypernat}
-%\usepackage{bibentry}
+% --------------------- 超 * 链 * 接 * 自 * 动 * 断 * 行 * 设 * 置 * -----------------------
+\makeatletter
+\def\UrlAlphabet{%
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+	\do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother
 
 \usepackage[backend=biber,style=gb7714_2015,]{biblatex}
 \setlength{\bibitemsep}{2pt}
@@ -125,13 +173,3 @@ citecolor=magenta]{hyperref}  %书签功能，选项去掉链接红色方框
 \usepackage{menukeys}
 \usepackage{hologo}
 \renewmenumacro{\directory}{pathswithfolder}
-
-
-
-
-
-
-
-
-
-
