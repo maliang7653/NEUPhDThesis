@@ -6,7 +6,7 @@ PhD Thesis XeLaTeX Template for NorthEastern University (NEU)
 
 2017.05.28——增加标准微粉直体“d”的定义
 
-2017.05.17——增加化学宏包定义
+2017.05.17——增加化学宏包mhchem的定义
 
 2017.04.10——在format中增加了对导数和偏导数的定义
 
