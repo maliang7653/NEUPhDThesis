@@ -3,13 +3,13 @@
 % !TEX encoding = UTF-8 Unicode
 
 % ==================================================================
-%                                                                   %
-%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex                 %
-%	版本：0.21                                                       %
-%	最后更新：2017.03.16                                              %
-%   二次修订：bainhome (E-main: maliang7653@sina.com)                 %
-%   编译环境：Windows 7 SP1 + TeXLive 2016 + TeXStudio2.12.2          %
-%                                                                   %
+%                                                                 %                                                       
+%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex           %
+%	版本：0.22                                                  %
+%	最后更新：2017.06.25                                         %
+%   	二次修订：bainhome (E-main: maliang7653@sina.com)            %
+%   	编译环境：Windows 7 SP1 + TeXLive 2016 + TeXStudio2.12.2     %
+%                                                                  % 
 % ==================================================================
 
 % 页面设置——A4 纸张
@@ -103,7 +103,7 @@
 \newtheorem{lemma}[theorem]{\hei 引理}
 \newtheorem{corollary}{\hei 推论}[chapter]
 \newtheorem{remark}{\hei 注解}[chapter]
-\newenvironment{proof}{\hei{证明}　}{\hfill $\square$ \vskip 4mm}
+%\newenvironment{proof}{\hei{证明}　}{\hfill $\square$ \vskip 4mm}
 
 % ------------- * 彩 * 色 * 含 * 框 * 定 * 理 * 环 * 境 * 定 * 义 *  ------------ 
 %Theorem
@@ -286,7 +286,7 @@
 }
 
 %定义数学直体的微分算子
-\newcommand{\opd}{\mathrm{d}}
+\newcommand*{\opd}{\mathop{}\!\mathrm{d}}
 %\newcommand{\opD}{\mathrm{D}}
 
 %导数，小写d
@@ -323,9 +323,9 @@
 %   增加 \ucite 命令使显示的引用为上标形式
 %   \newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 %   图形表格
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 % \captionstyle{\centering}
@@ -343,9 +343,9 @@
 \newcommand{\returnpage}[2]{\begin{minipage}{#1}\vspace{0.5ex} #2 \vspace{-1.5ex}\end{minipage}}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 % 定义题头格言的格式
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 
 \newsavebox{\AphorismAuthor}
 \newenvironment{Aphorism}[1]
@@ -367,9 +367,9 @@
 % define graph scale
 \def\gs{1.0}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 % 封面摘要
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------
 \def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
 \def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
 \def\caffil#1{\def\@caffil{#1}}\def\@caffil{}
@@ -443,7 +443,12 @@
         \end{center}
       }
 \renewcommand{\baselinestretch}{1.27}
-      \vspace{1.84cm}
+\,\hfil\,
+
+\,\hfil\,
+
+\,\hfil\,
+
       {
      	\sihao\song
              \@cNEU\\
