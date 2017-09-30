@@ -5,10 +5,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   东北大学博士论文 XeLaTeX 模版 —— 宏包配置文件 packages.tex
-%	版本：0.21
-%	最后更新：2017.05.30
+%	版本：0.23
+%	最后更新：2017.09.30
 %   二次修订：bainhome (E-main: maliang7653@sina.com)
-%   编译环境：Windows 7 SP1 + TeXLive 2016 + TeXStudio2.12.2
+%   编译环境：Windows 7 SP1 + TeXLive 2017 + TeXStudio2.12.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{expl3,ifthen,xstring}
@@ -43,8 +43,10 @@
 \usepackage{mathrsfs}
 \usepackage{amsthm}
 \usepackage{amscd}
+
 % ---------- * 新 * 数 * 学 * 字 * 体 * 测 * 试 * -------------
 \usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+
 % ---------------- * 化 * 学 * 相 * 关 * 宏 * 包 * -------------
 \usepackage[version=4]{mhchem}
 
@@ -66,30 +68,14 @@
 \usepackage{subfigure}           % 插入子图形
 \usepackage[subfigure]{ccaption} % 插图表格的双语标题
 \usepackage{overpic}
+\usepackage{float}            % 指定图形插入位置
 
 % --------------- * 含 * 框 * 定 * 理 * 环 * 境 * 定 * 义 * 用 * 宏 * 包 * --------------- 
 \usepackage[framemethod=TikZ]{mdframed}
 
 \usepackage{listings}         % 源代码展示
 
-% --------- * 大 * 工 * 原 * 始 * 设 * 置 * ---------
-%\lstset{%
-%  language=matlab,
-%  defaultdialect=empty,
-%  basicstyle=\ttfamily\small,
-%  backgroundcolor=\color{LightSteelBlue1},
-%  keywordstyle=\color{blue},
-%  showspaces=false,
-%  showstringspaces=false,
-%  showtabs=false,
-%  tabsize=2,breakatwhitespace=false,
-%  columns=flexible}
-
 % ---------- * 自 * 定 * 义 * 代 * 码 * 格 * 式 * 设 * 置 * ---------
-\renewcommand{\lstlistlistingname}{程\quad 序}
-\renewcommand{\lstlistingname}{例}
-\contentsuse{lstlisting}{lol}
-\titlecontents{lstlisting}[0pt]{\vspace{0.05\baselineskip}}{}{\thecontentslabel\quad}{\hspace{.5em}\titlerule*[8pt]{$\cdot$}\contentspage}
 \lstset{
 	language=matlab,
 	%basicstyle=\normalsize\tt,
@@ -102,41 +88,25 @@
 	breaklines=false,
 	breakatwhitespace=false,
 }
-\usepackage{caption}
-\captionsetup[lstlisting]{labelformat=empty,labelsep=none,format=plain,font=bf}
-
 
 %\usepackage{verbatim}
 % 其他
 \usepackage{calc}   % 在 tex 文件中具有一些计算功能，主要用在页面控制。
-%\usepackage[xetex,
-%bookmarksnumbered=true,
-%bookmarksopen=true,
-%colorlinks=true,
-%% pdfborder={0 0 1},
-%citecolor=blue,
-%linkcolor=blue,
-%anchorcolor=green,
-%urlcolor=magenta,
-%breaklinks=true,
-%CJKbookmarks=true,
-%]{hyperref}
+
 
 % ----------------------- MATLAB * 代 * 码 * 格 * 式 * 设 * 置 ------------------------
-%\usepackage[minted]{tcolorbox}
-%\tcbuselibrary{skins, listings, xparse, breakable}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 
-% ---------------------- * 超 * 链 * 接 * 与 * 书 * 签 * 设 * 置 * -----------------------------
+% ------- * 超 * 链 * 接 * 与 * 书 * 签 * 设 * 置 * -----------
 \usepackage[CJKbookmarks,
 colorlinks=true,
 bookmarksnumbered=true,%
 pdfstartview=FitH,
-linkcolor=blue,
+linkcolor=black,
 anchorcolor=violet,
 citecolor=magenta]{hyperref}  %书签功能，选项去掉链接红色方框
 
-% --------------------- 超 * 链 * 接 * 自 * 动 * 断 * 行 * 设 * 置 * -----------------------
+% ---------- 超 * 链 * 接 * 自 * 动 * 断 * 行 * 设 * 置 * -----------
 \makeatletter
 \def\UrlAlphabet{%
 	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
@@ -151,25 +121,27 @@ citecolor=magenta]{hyperref}  %书签功能，选项去掉链接红色方框
 \g@addto@macro{\UrlBreaks}{\UrlDigits}
 \makeatother
 
-\usepackage[backend=biber,style=gb7714_2015,]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015,]{biblatex}
 \setlength{\bibitemsep}{2pt}
-%\defbibheading{bibliography}[\bibname]{%
-%	\phantomsection%解决链接指引出错的问题，相当于加入了一个引导点
-%\addcontentsline{toc}{subsubsection}{#1}
-%\centering\subsubsection*{#1}}%
 \defbibheading{bibliography}[\bibname]{%
 	\chapter*{#1}%
 	\markboth{#1}{#1}}
 % ------------- * BibLaTeX * 文 * 献 * 设 * 置 * ---------------
-%\addbibresource[location=local]{PHDReferences.bib}
-\addbibresource[location=local]{Ref.bib}
-%\usepackage{ulem}
-%\newcommand\yellowback{\bgroup\markoverwith
-%	{\textcolor{yellow}{\rule[-0.5ex]{2pt}{2.5ex}}}\ULon}
-%\newcommand\reduline{\bgroup\markoverwith
-%	{\textcolor{red}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+%\addbibresource[location=local]{Ref.bib}                    %   有文献doi链接
+\addbibresource[location=local]{RefNoLink.bib}            %   无文献doi链接
+
 
 % ---------- * 文 * 件 * 夹 * 与 * 路 * 径 * logo * 显 * 示 * ------------
 \usepackage{menukeys}
 \usepackage{hologo}
 \renewmenumacro{\directory}{pathswithfolder}
+
+
+
+
+
+
+
+
+
+
