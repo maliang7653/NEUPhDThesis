@@ -3,13 +3,13 @@
 % !TEX encoding = UTF-8 Unicode
 
 % ==================================================================
-%                                                                 %                                                       
-%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex           %
-%	版本：0.22                                                  %
-%	最后更新：2017.06.25                                         %
-%   	二次修订：bainhome (E-main: maliang7653@sina.com)            %
-%   	编译环境：Windows 7 SP1 + TeXLive 2016 + TeXStudio2.12.2     %
-%                                                                  % 
+%                                                                    %                                                       
+%	东北大学博士论文 XeLaTeX 模版 —— 格式文件 format.tex             %
+%   版本：0.23                                                       %
+%	最后更新：2017.09.30                                          %
+%   二次修订：bainhome (E-main: maliang7653@sina.com)                 %
+%   编译环境：Windows 7 SP1 + TeXLive 2017 + TeXStudio2.12.2          %
+%                                                                    %                                                           
 % ==================================================================
 
 % 页面设置——A4 纸张
@@ -76,7 +76,9 @@
 
 % 设置目录字体和行间距
 \def\defaultmenufont{\renewcommand{\baselinestretch}{1.22}
-  \fontsize{12pt}{15pt}\selectfont}
+\fontsize{12pt}{15pt}\selectfont}
+
+
 
 % 固定距离内容填入及下划线
 \makeatletter
@@ -187,9 +189,9 @@
 \renewcommand\listtablename{\hfill 表~格~目~录 \hfill}
 \renewcommand{\bibname}{\hfill 参~考~文~献 \hfill}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------
 % 段落章节相关
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 % 设置章、节、小节、小小节的间距
@@ -207,6 +209,16 @@
 \dottedcontents{section}[1.32cm]{}{1.8em}{5pt}
 \dottedcontents{subsection}[2.32cm]{}{2.7em}{5pt}
 \dottedcontents{subsubsection}[3.32cm]{}{3.4em}{5pt}
+
+%---------------------------
+% 定义章级别的目录字体与字号
+%---------------------------
+\titlecontents{chapter}[0em]
+{\sanhao\hei}
+{第~\contentslabel{0em}~~~章~}
+{\hspace*{0em}}
+{\dotfill \contentspage}
+
 
 % 段落之间的竖直距离
 \setlength{\parskip}{1.2pt}
@@ -251,22 +263,21 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 % 列表环境设置
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 
 \setlist[enumerate]{(1),itemsep=-5pt,topsep=0mm,labelindent=\parindent,leftmargin=*}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 % 国际单位，以点连接。
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 \sisetup{inter-unit-product = { }\cdot{ }}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 % 参考文献的处理
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------
 
 % \addtolength{\bibsep}{-0.5em}              % 缩小参考文献间的垂直间距
 
@@ -298,28 +309,9 @@
 	}
 }
 
-
-% \let\orig@Itemize =\itemize
-% \let\orig@Enumerate =\enumerate
-% \let\orig@Description =\description
-
-% \def\Myspacing{\itemsep=1ex \topsep=-4ex \partopsep=-2ex \parskip=-1ex \parsep=2ex}
-% \def\newitemsep{
-% \renewenvironment{itemize}{\orig@Itemize\Myspacing}{\endlist}
-% \renewenvironment{enumerate}{\orig@Enumerate\Myspacing}{\endlist}
-% \renewenvironment{description}{\orig@Description\Myspacing}{\endlist}
-% }
-%   \def\olditemsep{
-%   \renewenvironment{itemize}{\orig@Itemize}{\endlist}
-%   \renewenvironment{enumerate}{\orig@Enumerate}{\endlist}
-%   \renewenvironment{description}{\orig@Description}{\endlist}
-% }
-%   \renewcommand{\labelenumi}{(\arabic{enumi})}
-%   \newitemsep
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
 %   其他设置
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
 %   增加 \ucite 命令使显示的引用为上标形式
 %   \newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
 
@@ -330,18 +322,15 @@
 \renewcommand{\tablename}{表}
 % \captionstyle{\centering}
 % \hangcaption
-\captiondelim{\hspace{1em}}
-\captiondelim{\hspace{1em}}
+\captiondelim{ }
+\captiondelim{ }
 \captionnamefont{\zhongwu}
 \captiontitlefont{\zhongwu}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 
-
-
 \newcommand{\tablepage}[2]{\begin{minipage}{#1}\vspace{0.5ex} #2 \vspace{0.5ex}\end{minipage}}
 \newcommand{\returnpage}[2]{\begin{minipage}{#1}\vspace{0.5ex} #2 \vspace{-1.5ex}\end{minipage}}
-
 
 % -------------------------------------
 % 定义题头格言的格式
@@ -462,14 +451,14 @@
     \sihao{\textbf{A Dissertation in \@eMajor}}
     \vspace{1.2cm}
     \begin{center}
-    	\renewcommand{\baselinestretch}{1}{
+    	\renewcommand{\baselinestretch}{0.8}{
           {\erhao\textbf{\@etitle}\\}
           }
           \vspace{2.0cm}
           {By \@eauthor \\}
           \vspace{2.0cm}
           {Supervisor: \@esupervisor \\}
-      \vspace{8.6cm}
+      \vspace{7.2cm}
      	\sanhao \textbf{\@eNEU\\}
         \vspace{0.34cm}
         \textbf{\@edate}\\
