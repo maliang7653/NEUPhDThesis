@@ -7,6 +7,7 @@ PhD Thesis XeLaTeX Template for NorthEastern University (NEU)
 (1). 便于实验室使用，扉页英文封面专业改为“Mechine Design and Theory”；
 (2). 重新上传最新文献格式文件：gb7714-2015.bbx、gb7714-2015.cbx、gb7714-2015ay.bbx和gb7714-2015ay.cbx，此次上传的4个文件是文献style上传者胡振震2017.03最新修改的，主要是加入了利用\parencite{key}命令，用于输入正文形式的文献编号——一个非常有用的设定；
 (3). 按东大最新论文格式，重新修订了目录章标题字体格式，使之为三号黑体；
+(4). 上传了用于书写MATLAB函数专用的sty文件：mcode
 
 2017.06.25——更改中文扉页东北大学标题与上部的间距位置，改为用三行手动控制
 
